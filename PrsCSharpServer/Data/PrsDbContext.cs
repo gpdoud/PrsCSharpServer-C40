@@ -14,4 +14,11 @@ public class PrsDbContext : DbContext {
 
     public PrsDbContext(DbContextOptions<PrsDbContext> options) : base(options) { }
 
+    public PrsDbContext() { }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
+        if(!optionsBuilder.IsConfigured) {
+            optionsBuilder.UseSqlServer("server=localhost\\sqlexpress;database=PrsDbC40;trusted_connection=true;trustServerCertificate=true;");
+        }
+    }
 }
