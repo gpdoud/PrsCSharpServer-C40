@@ -26,7 +26,9 @@ namespace PrsCSharpServer.Controllers {
             if(_context.Products == null) {
                 return NotFound();
             }
-            return await _context.Products.ToListAsync();
+            return await _context.Products
+                                    .Include(x => x.Vendor)
+                                    .ToListAsync();
         }
 
         // GET: api/Products/5
@@ -35,7 +37,9 @@ namespace PrsCSharpServer.Controllers {
             if(_context.Products == null) {
                 return NotFound();
             }
-            var product = await _context.Products.FindAsync(id);
+            var product = await _context.Products
+                                            .Include(x => x.Vendor)
+                                            .SingleOrDefaultAsync(x => x.Id == id);
 
             if(product == null) {
                 return NotFound();

@@ -65,12 +65,14 @@ namespace PrsCSharpServer.Controllers {
         [HttpPut("review/{id}")]
         public async Task<IActionResult> ReviewRequest(int id, Request request) {
             request.Status = (request.Total <= 50) ? "APPROVED" : "REVIEW";
+            request.RejectionReason = null;
             return await PutRequest(id, request);
         }
 
         [HttpPut("approve/{id}")]
         public async Task<IActionResult> ApproveRequest(int id, Request request) {
             request.Status = "APPROVED";
+            request.RejectionReason = null;
             return await PutRequest(id, request);
         }
 

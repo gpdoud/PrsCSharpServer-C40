@@ -9,7 +9,8 @@
                 "build",
                 "${workspaceFolder}/PrsCSharpServer.sln",
                 "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "/consoleloggerparameters:NoSummary",
+                "-C DOCKER"
             ],
             "problemMatcher": "$msCompile"
         },

@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-
 using PrsCSharpServer.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,8 +7,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
+var connStrKey = "ProdDb";
+#if DOCKER
+    connStrKey = "DockerDb";
+#elif DEBUG
+    connStrKey = "DevDb";
+#endif
 builder.Services.AddDbContext<PrsDbContext>(x =>
-    x.UseSqlServer(builder.Configuration.GetConnectionString("DevDb"))
+    x.UseSqlServer(builder.Configuration.GetConnectionString(connStrKey))
 );
 
 builder.Services.AddCors();

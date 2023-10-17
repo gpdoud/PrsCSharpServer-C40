@@ -13,6 +13,9 @@
             "program": "${workspaceFolder}/PrsCSharpServer/bin/Debug/net7.0/PrsCSharpServer.dll",
             "args": [],
             "cwd": "${workspaceFolder}/PrsCSharpServer",
+            "launchBrowser": {
+                "enabled": false
+            },
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {
